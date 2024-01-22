@@ -1,11 +1,11 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Calculator</title>
     <style>
-       
         body {
             font-family: Arial, sans-serif;
             display: flex;
@@ -13,24 +13,42 @@
             align-items: center;
             height: 100vh;
             margin: 0;
+            background-color: #f0f8ff; /* Set background color to light blue */
         }
+
         #calculator {
             text-align: center;
+            background-color: #add8e6; /* Set calculator background color to light blue */
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
         }
+
         input {
             width: 200px;
             padding: 10px;
             margin-bottom: 10px;
+            font-size: 16px;
         }
+
         button {
             width: 50px;
             height: 50px;
             margin: 5px;
             font-size: 16px;
-             background-color: red;
+            background-color: #4682b4; /* Set button background color to steel blue */
+            color: white; /* Set button text color to white */
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+
+        button:hover {
+            background-color: #5f9ea0; /* Change button color on hover */
         }
     </style>
 </head>
+
 <body>
     <div id="calculator">
         <input type="text" id="display" readonly>
@@ -75,4 +93,5 @@
         }
     </script>
 </body>
+
 </html>
