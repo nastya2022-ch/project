@@ -12,59 +12,56 @@
     <script src="https://cdn.tailwindcss.com"></script>
     <!-- example for dark theme styling when using tailwind cdn -->
     <style>
-        /*examples for dark/light themes*/
-        .dark .dark\:text-white {
-            color: #fff;
-        }
-        .dark .dark\:bg-gray-800 {
-            background-color: #1f2937;
-        }
-        .light .light\:text-black {
-            color: #000;
-        }
-
-        /*add your custom css rules here*/
         body {
-            font-family: Arial, sans-serif;
+            font-family: 'Roboto', sans-serif;
             display: flex;
             justify-content: center;
             align-items: center;
             height: 100vh;
-            margin: 0;
-            background-color: #f0f8ff; /* Set background color to light blue */
+            margin: auto ;
+            background-color:white;
         }
 
         #calculator {
+            display: grid;
+            grid-template-columns: repeat(5, 1fr);
+            gap: 10px;
             text-align: center;
-            background-color: #add8e6; /* Set calculator background color to light blue */
-            padding: 20px;
+            background-color: gray;
             border-radius: 10px;
             box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
-        }
-
-        input {
-            width: 200px;
+            width:360px;
+            height: 330px;
             padding: 10px;
-            margin-bottom: 10px;
-            font-size: 16px;
+            
         }
 
-        button {
+        .button {
             width: 50px;
-            height: 50px;
-            margin: 5px;
-            font-size: 16px;
-            background-color: #4682b4; /* Set button background color to steel blue */
-            color: white; /* Set button text color to white */
-            border: none;
+            height: 20px;
+            margin:auto;
+            font-size: 14px;
+            background-color: white;
+            color: black;
+            border: auto;
             border-radius: 5px;
             cursor: pointer;
         }
 
-        button:hover {
-            background-color: #5f9ea0; /* Change button color on hover */
+
+        .button.blue {
+            background-color: blue;
         }
-    </style>
+
+
+        #display {
+            grid-column: span 5;
+            width: 90%;
+            margin: auto;
+            padding: 10px;
+            font-size: 18px;
+            text-align: right;
+        }
     </style>
 </head>
 
@@ -72,33 +69,56 @@
 
     <!-- your app code goes here -->
     <body>
-        <div id="calculator">
-            <input type="text" id="display" readonly>
-            <br>
-            <button onclick="appendToDisplay('1')">1</button>
-            <button onclick="appendToDisplay('2')">2</button>
-            <button onclick="appendToDisplay('3')">3</button>
-            <button onclick="appendToDisplay('+')">+</button>
-            <br>
-            <button onclick="appendToDisplay('4')">4</button>
-            <button onclick="appendToDisplay('5')">5</button>
-            <button onclick="appendToDisplay('6')">6</button>
-            <button onclick="appendToDisplay('-')">-</button>
-            <br>
-            <button onclick="appendToDisplay('7')">7</button>
-            <button onclick="appendToDisplay('8')">8</button>
-            <button onclick="appendToDisplay('9')">9</button>
-            <button onclick="appendToDisplay('*')">*</button>
-            <br>
-            <button onclick="appendToDisplay('0')">0</button>
-            <button onclick="clearDisplay()">C</button>
-            <button onclick="calculateResult()">=</button>
-            <button onclick="appendToDisplay('/')">/</button>
-        </div>
+
+        <div id="calculator"></div>
     
         <script>
-            // JavaScript functions for calculator operations
-            function appendToDisplay(value) {
+            document.getElementById('calculator').innerHTML = `
+                <input type="text" id="display" readonly>
+                <button class="button" onclick="memoryClear()">MC</button>
+                <button class="button" onclick="memoryRecall()">MR</button>
+                <button class="button" onclick="memoryAdd()">M+</button>
+                <button class="button" onclick="memorySubtract()">M-</button>
+                <button class="button" onclick="memoryStore()">MS</button>
+                <button class="button" onclick="appendToDisplay('2^')">2^nd</button>
+                <button class="button" onclick="appendToDisplay(Math.PI)">π</button>
+                <button class="button" onclick="appendToDisplay(Math.E)">e</button>
+                <button class="button" onclick" onclick="clearDisplay()">C</button>
+                <button class="button" onclick="deleteLast()">←</button>
+                <button class="button" onclick="appendToDisplay('x^2')">X²</button>
+                <button class="button" onclick="appendToDisplay('1/(')">1/x</button>
+                <button class="button" onclick="absolute()">|x|</button>
+                <button class="button" onclick="exponential()">exp</button>
+                <button class="button" onclick="appendToDisplay('mod(')">mod</button>
+                <button class="button" onclick="appendToDisplay('sqrt(')">√x</button>
+                <button class="button" onclick="appendToDisplay('(')">(</button>
+                <button class="button" onclick="appendToDisplay(')')">)</button>
+                <button class="button" onclick="appendToDisplay('!')">n!</button>
+                <button class="button" onclick="appendToDisplay('/')">/</button>
+                <button class="button" onclick="appendToDisplay('x^y')">x^y</button>
+                <button class="button" onclick="appendToDisplay('7')">7</button>
+                <button class="button" onclick="appendToDisplay('8')">8</button>
+                <button class="button" onclick="appendToDisplay('9')">9</button>
+                <button class="button" onclick" onclick="appendToDisplay('*')">*</button>
+                <button class="button" onclick="tenToPower()">10^x</button>
+                <button class="button" onclick="appendToDisplay('4')">4</button>
+                <button class="button" onclick="appendToDisplay('5')">5</button>
+                <button class="button" onclick="appendToDisplay('6')">6</button>
+                <button class="button" onclick" onclick="appendToDisplay('-')">-</button>
+                <button class="button" onclick="logarithm()">log</button>
+                <button class="button" onclick="appendToDisplay('1')">1</button>
+                <button class="button" onclick="appendToDisplay('2')">2</button>
+                <button class="button" onclick="appendToDisplay('3')">3</button>
+                <button class="button" onclick" onclick="appendToDisplay('+')">+</button>
+                <button class="button" onclick="appendToDisplay('ln(')">ln</button>
+                <button class="button" onclick="appendToDisplay('±')">±</button>
+                <button class="button" onclick="appendToDisplay('0')">0</button>
+                <button class="button" onclick="appendToDisplay('.')">.</button>
+                <button class="button blue double" onclick="calculateResult()">=</button>
+       
+            `;
+              // JavaScript functions for calculator operations
+             function appendToDisplay(value) {
                 document.getElementById('display').value += value;
             }
     
@@ -107,8 +127,11 @@
             }
     
             function calculateResult() {
+                // Implement calculation logic
+                var expression = document.getElementById('display').value;
                 try {
-                    document.getElementById('display').value = eval(document.getElementById('display').value);
+                    var result = eval(expression);
+                    document.getElementById('display').value = result;
                 } catch (error) {
                     document.getElementById('display').value = 'Error';
                 }
