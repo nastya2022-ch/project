@@ -56,6 +56,7 @@
             font-size: 18px;
             text-align: right;
         }
+       
     </style>
 </head>
 
@@ -66,11 +67,11 @@
     <script>
         document.getElementById('calculator').innerHTML = `
             <input type="text" id="display" readonly>
-            <button class="button" onclick="memoryClear()">MC</button>
-            <button class="button" onclick="memoryRecall()">MR</button>
-            <button class="button" onclick="memoryAdd()">M+</button>
-            <button class="button" onclick="memorySubtract()">M-</button>
-            <button class="button" onclick="memoryStore()">MS</button>
+            <button class="button" onclick="appendToDisplay('MC')">MC</button>
+            <button class="button" onclick="appendToDisplay('MR')">MR</button>
+            <button class="button" onclick="appendToDisplay('M+')">M+</button>
+            <button class="button" onclick="appendToDisplay('M-')">M-</button>
+            <button class="button" onclick="appendToDisplay('MS')">MS</button>
             <button class="button" onclick="appendToDisplay('2^')">2^nd</button>
             <button class="button" onclick="appendToDisplay(Math.PI)">π</button>
             <button class="button" onclick="appendToDisplay(Math.E)">e</button>
@@ -78,7 +79,7 @@
             <button class="button" onclick="deleteLast()">←</button>
             <button class="button" onclick="square()">x²</button>
             <button class="button" onclick="appendToDisplay('1/(')">1/x</button>
-            <button class="button" onclick="absolute()">|x|</button>
+            <button class="button" onclick="appendToDisplay('abs(')">|x|</button>
             <button class="button" onclick="exponential()">exp</button>
             <button class="button" onclick="appendToDisplay('mod(')">mod</button>
             <button class="button" onclick="squareRoot()">√x</button>
@@ -96,7 +97,7 @@
             <button class="button" onclick="appendToDisplay('5')">5</button>
             <button class="button" onclick="appendToDisplay('6')">6</button>
             <button class="button" onclick" onclick="appendToDisplay('-')">-</button>
-            <button class="button" onclick="logarithm()">log</button>
+            <button class="button" onclick="appendToDisplay('log(')">log</button>
             <button class="button" onclick="appendToDisplay('1')">1</button>
             <button class="button" onclick="appendToDisplay('2')">2</button>
             <button class="button" onclick="appendToDisplay('3')">3</button>
