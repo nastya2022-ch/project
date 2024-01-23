@@ -113,6 +113,11 @@
          function appendToDisplay(value) {
             document.getElementById('display').value += value;
         }
+        function deleteLast() {
+        var displayValue = document.getElementById('display').value;
+        document.getElementById('display').value = displayValue.slice(0, -1);
+        }
+
         function square() {
         let currentValue = document.getElementById('display').value;
         let result = Math.pow(parseFloat(currentValue), 2);
